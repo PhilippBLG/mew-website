@@ -1,0 +1,1092 @@
+backend:
+  name: git-gateway
+  accept_roles:
+    - admin
+    - editor
+  branch: master
+media_folder: theme/assets/images
+public_folder: /assets/images
+collections:
+  - name: pages
+    label: Pages
+    identifier_field: title
+    extension: md
+    create: false
+    delete: false
+    slug: '{{slug}}'
+    editor:
+      preview: false
+    folder: cms/pages
+    fields:
+      - label: Title
+        name: title
+        widget: string
+      - label: Publish Date
+        name: date
+        widget: datetime
+      - label: Layout
+        widget: hidden
+        name: layout
+        default: '{{slug}}.html'
+      - &ref_0
+        label: Seo
+        name: seo
+        widget: object
+        collapsed: true
+        fields:
+          - label: Title
+            name: title
+            widget: string
+            required: false
+          - label: Description
+            name: description
+            widget: string
+            required: false
+          - label: No index
+            name: noindex
+            widget: boolean
+            default: false
+            required: false
+          - label: Open Graph Title
+            name: og:title
+            widget: string
+            required: false
+          - label: Open Graph Image
+            name: og:image
+            widget: image
+            required: false
+            media_library:
+              config:
+                multiple: false
+          - label: Twitter Title
+            name: twitter:title
+            widget: string
+            default: summary
+            required: false
+          - label: Twitter Card
+            name: twitter:card
+            widget: string
+            default: summary
+            required: false
+          - label: Twitter Site
+            name: twitter:site
+            widget: string
+            required: false
+          - label: Twitter Creator
+            name: twitter:creator
+            widget: string
+            required: false
+          - label: Additional HTML tags
+            name: additional_tags
+            widget: text
+            required: false
+  - name: veranstaltungen
+    label: Veranstaltungens
+    folder: cms/veranstaltungen
+    create: true
+    identifier_field: name
+    extension: md
+    slug: '{{slug}}'
+    fields:
+      - hint: ''
+        name: title
+        label: Name
+        widget: string
+        required: true
+      - hint: ''
+        name: created-on
+        label: Created On
+        widget: datetime
+        required: false
+      - hint: ''
+        name: updated-on
+        label: Updated On
+        widget: datetime
+        required: false
+      - hint: ''
+        name: published-on
+        label: Published On
+        widget: datetime
+        required: false
+      - label: Text zum Event
+        name: body
+        widget: markdown
+        required: false
+      - hint: ''
+        name: f_kategorie
+        label: Kategorie
+        widget: select
+        required: false
+        options:
+          - label: Private Feiern
+            value: Private Feiern
+          - label: Großveranstaltungen
+            value: Großveranstaltungen
+          - label: Abipartys
+            value: Abipartys
+      - hint: ''
+        name: f_bilder-von-der-veranstaltung
+        label: Bilder von der Veranstaltung
+        widget: list
+        required: false
+        fields:
+          - hint: ''
+            name: url
+            label: Image
+            widget: image
+            required: false
+            allow_multiple: false
+          - hint: Image Alt
+            name: alt
+            label: alt
+            widget: string
+            required: false
+      - label: Tags
+        widget: hidden
+        name: tags
+        default: veranstaltungen
+      - label: Layout
+        widget: hidden
+        name: layout
+        default: '[veranstaltungen].html'
+      - label: Publish Date
+        name: date
+        widget: datetime
+      - *ref_0
+  - name: partysets
+    label: Partysets
+    folder: cms/partysets
+    create: true
+    identifier_field: name
+    extension: md
+    slug: '{{slug}}'
+    fields:
+      - hint: ''
+        name: title
+        label: Name
+        widget: string
+        required: true
+      - hint: ''
+        name: created-on
+        label: Created On
+        widget: datetime
+        required: false
+      - hint: ''
+        name: updated-on
+        label: Updated On
+        widget: datetime
+        required: false
+      - hint: ''
+        name: published-on
+        label: Published On
+        widget: datetime
+        required: false
+      - label: Beschreibung
+        name: body
+        widget: markdown
+        required: false
+      - hint: ''
+        name: f_kategorie
+        label: Kategorie
+        widget: select
+        required: false
+        options:
+          - label: Hochzeiten
+            value: Hochzeiten
+          - label: Geburtstage
+            value: Geburtstage
+          - label: Abipartys
+            value: Abipartys
+      - hint: ''
+        name: f_main-image
+        label: Main Image
+        widget: object
+        required: false
+        fields:
+          - hint: ''
+            name: url
+            label: Image
+            widget: image
+            required: false
+            allow_multiple: false
+          - hint: Image Alt
+            name: alt
+            label: alt
+            widget: string
+            required: false
+      - hint: ''
+        name: f_kurzbeschreibung
+        label: Kurzbeschreibung
+        widget: string
+        required: false
+      - hint: ''
+        name: f_andere-bilder
+        label: Andere Bilder
+        widget: list
+        required: false
+        fields:
+          - hint: ''
+            name: url
+            label: Image
+            widget: image
+            required: false
+            allow_multiple: false
+          - hint: Image Alt
+            name: alt
+            label: alt
+            widget: string
+            required: false
+      - hint: ''
+        name: f_tages-mietpreis
+        label: Preise ab
+        widget: number
+        required: false
+      - hint: ''
+        name: f_veranstaltungsbeispiele
+        label: Veranstaltungsbeispiele
+        widget: relation
+        required: false
+        collection: veranstaltungen
+        value_field: cms/veranstaltungen/{{slug}}.md
+        search_fields:
+          - slug
+          - name
+        display_fields:
+          - title
+        multiple: true
+      - label: Tags
+        widget: hidden
+        name: tags
+        default: partysets
+      - label: Layout
+        widget: hidden
+        name: layout
+        default: '[partysets].html'
+      - label: Publish Date
+        name: date
+        widget: datetime
+      - *ref_0
+  - label: Theme Settings
+    name: settings
+    identifier_field: title
+    extension: json
+    create: false
+    delete: false
+    slug: '{{slug}}'
+    editor:
+      preview: false
+    files:
+      - label: General
+        name: site
+        file: cms/_data/settings/site.json
+        fields:
+          - label: Title
+            name: title
+            widget: hidden
+            default: General
+          - hint: Full domain url (needed for a correct sitemap file)
+            name: domain
+            label: Domain
+            widget: string
+            required: false
+          - name: favicon
+            label: Favicon
+            widget: image
+            allow_multiple: false
+            required: false
+          - name: apple_touch_icon
+            label: Apple Touch Icon
+            widget: image
+            allow_multiple: false
+            required: false
+          - name: header_additional_content
+            label: Additional Content Header
+            hint: Content here will be placed before </head> tag
+            widget: text
+            required: false
+          - name: footer_additional_content
+            label: Additional Content Footer
+            hint: Content here will be placed before </body> tag
+            widget: text
+            required: false
+          - name: images_optimization
+            label: Images Optimization
+            widget: object
+            collapsed: false
+            fields:
+              - label: Image Formats
+                name: formats
+                widget: select
+                multiple: true
+                options:
+                  - label: Avif
+                    value: avif
+                  - label: Webp
+                    value: webp
+              - label: Image Dimensions
+                name: dimensions
+                widget: select
+                multiple: true
+                options:
+                  - label: '500'
+                    value: 500
+                  - label: '800'
+                    value: 800
+                  - label: '1080'
+                    value: 1080
+                  - label: '1600'
+                    value: 1600
+                  - label: '2000'
+                    value: 2000
+                  - label: '2600'
+                    value: 2600
+      - label: Colors
+        name: colors
+        file: cms/_data/colors.json
+        fields:
+          - label: Title
+            name: title
+            widget: hidden
+            default: Colors
+      - label: Texts
+        name: texts
+        file: cms/_data/texts.json
+        fields:
+          - label: Title
+            name: title
+            widget: hidden
+            default: Texts
+          - hint: 'Original text: Loading..., key: -70daac2e'
+            label: Text
+            name: '-70daac2e'
+            widget: string
+          - hint: 'Original text: Home, key: 2268ff'
+            label: Text
+            name: 2268ff
+            widget: string
+          - hint: 'Original text: Partysets, key: d0c2817'
+            label: Text
+            name: d0c2817
+            widget: string
+          - hint: 'Original text: Veranstaltungen, key: -32d2d1a1'
+            label: Text
+            name: '-32d2d1a1'
+            widget: string
+          - hint: 'Original text: Events, key: 7c6ccd39'
+            label: Text
+            name: 7c6ccd39
+            widget: string
+          - hint: 'Original text: Veranstaltungstechnik, key: 1536011d'
+            label: Text
+            name: 1536011d
+            widget: string
+          - hint: 'Original text: Blog, key: 1fa3c2'
+            label: Text
+            name: 1fa3c2
+            widget: string
+          - hint: >-
+              Original text: Die neuesten Nachrichten, Updates und Informationen
+              aus der Branche., key: 8e2a25f
+            label: Text
+            name: 8e2a25f
+            widget: string
+          - hint: 'Original text: Referenzen, key: -36a12306'
+            label: Text
+            name: '-36a12306'
+            widget: string
+          - hint: >-
+              Original text: Erfahren Sie, wie unsere Kunden große Veränderungen
+              bewirken., key: 39075e94
+            label: Text
+            name: '39075e94'
+            widget: string
+          - hint: 'Original text: Equipment, key: -4865fa92'
+            label: Text
+            name: '-4865fa92'
+            widget: string
+          - hint: >-
+              Original text: Entdecke unsere umfangreiche Auswahl an
+              Veranstaltungsequipment., key: -6de6d47a
+            label: Text
+            name: '-6de6d47a'
+            widget: string
+          - hint: 'Original text: Eventplanung, key: -40ba6295'
+            label: Text
+            name: '-40ba6295'
+            widget: string
+          - hint: 'Original text: Unsere Diensleistungen, key: 5aa02e49'
+            label: Text
+            name: 5aa02e49
+            widget: string
+          - hint: >-
+              Original text: Unvergessliche Veranstaltungen - professionelle
+              Dienstleistungen für Sie., key: -7d719f1d
+            label: Text
+            name: '-7d719f1d'
+            widget: string
+          - hint: 'Original text: Über uns, key: 38557d8d'
+            label: Text
+            name: 38557d8d
+            widget: string
+          - hint: >-
+              Original text: Erfahren Sie mehr über unsere Geschichte und unser
+              Leitbild., key: 7484ce7f
+            label: Text
+            name: 7484ce7f
+            widget: string
+          - hint: 'Original text: Careers, key: -7bc27f6b'
+            label: Text
+            name: '-7bc27f6b'
+            widget: string
+          - hint: 'Original text: We''re hiring!, key: 417b3e5c'
+            label: Text
+            name: 417b3e5c
+            widget: string
+          - hint: >-
+              Original text: We’re always looking for talented people. Join our
+              team!, key: 1bda948d
+            label: Text
+            name: 1bda948d
+            widget: string
+          - hint: 'Original text: Blogbeiträge, key: -4387f980'
+            label: Text
+            name: '-4387f980'
+            widget: string
+          - hint: 'Original text: How to get started, key: 157ed582'
+            label: Text
+            name: 157ed582
+            widget: string
+          - hint: >-
+              Original text: Jump right in — get an overview of the basics and
+              get started on building., key: -4dd86f63
+            label: Text
+            name: '-4dd86f63'
+            widget: string
+          - hint: 'Original text: Zum Blog, key: 6e45aab0'
+            label: Text
+            name: 6e45aab0
+            widget: string
+          - hint: 'Original text: Advanced features, key: -4f925da5'
+            label: Text
+            name: '-4f925da5'
+            widget: string
+          - hint: >-
+              Original text: Once you’re ready, learn more about advanced
+              analytics, features and shortcuts., key: -5838100e
+            label: Text
+            name: '-5838100e'
+            widget: string
+          - hint: 'Original text: Alle Blog beiträge, key: 44546740'
+            label: Text
+            name: '44546740'
+            widget: string
+          - hint: 'Original text: Media, key: 46c7fc4'
+            label: Text
+            name: 46c7fc4
+            widget: string
+          - hint: 'Original text: Webdesign, key: 4fa4ddf2'
+            label: Text
+            name: 4fa4ddf2
+            widget: string
+          - hint: >-
+              Original text: The latest industry news, updates and info., key:
+              -1eac165e
+            label: Text
+            name: '-1eac165e'
+            widget: string
+          - hint: 'Original text: Customer stories, key: 53250231'
+            label: Text
+            name: '53250231'
+            widget: string
+          - hint: >-
+              Original text: Learn how our customers are making big changes.,
+              key: -774bb977
+            label: Text
+            name: '-774bb977'
+            widget: string
+          - hint: 'Original text: Documentation, key: -71c2ed66'
+            label: Text
+            name: '-71c2ed66'
+            widget: string
+          - hint: >-
+              Original text: All the boring stuff that you (hopefully won’t)
+              need., key: -630bf2f
+            label: Text
+            name: '-630bf2f'
+            widget: string
+          - hint: 'Original text: Mediendesign, key: -4d67191c'
+            label: Text
+            name: '-4d67191c'
+            widget: string
+          - hint: >-
+              Original text: Learn about our story and our mission statement.,
+              key: 208919fe
+            label: Text
+            name: 208919fe
+            widget: string
+          - hint: 'Original text: Press, key: 49cb423'
+            label: Text
+            name: 49cb423
+            widget: string
+          - hint: >-
+              Original text: News and writings, press releases, and press
+              resources., key: 3ff3e20d
+            label: Text
+            name: 3ff3e20d
+            widget: string
+          - hint: 'Original text: Watch video, key: 3f767dca'
+            label: Text
+            name: 3f767dca
+            widget: string
+          - hint: 'Original text: All video tutorials, key: 208af6d1'
+            label: Text
+            name: 208af6d1
+            widget: string
+          - hint: 'Original text: Kontakt, key: 43219700'
+            label: Text
+            name: '43219700'
+            widget: string
+          - hint: >-
+              Original text: Wir machen professionelles Mediendesign und , key:
+              33f4002a
+            label: Text
+            name: 33f4002a
+            widget: string
+          - hint: 'Original text: maßgeschneiderte, key: -575c4f81'
+            label: Text
+            name: '-575c4f81'
+            widget: string
+          - hint: >-
+              Original text:  Eventplanung für unvergessliche Erlebnisse., key:
+              205d1754
+            label: Text
+            name: 205d1754
+            widget: string
+          - hint: >-
+              Original text: - Wir sind eine Full-Service-Design- und
+              Medienagentur, die sich auf einfache, nützliche und ansprechende
+              Lösungen spezialisiert hat., key: 6d9a5cb7
+            label: Text
+            name: 6d9a5cb7
+            widget: text
+          - hint: 'Original text: Instagram, key: 792b2792'
+            label: Text
+            name: 792b2792
+            widget: string
+          - hint: >-
+              Original text: Von A bis Z unvergessliche Events: Hochzeiten,
+              Geburtstage, Firmenfeiern - Vertrauen Sie unserer Expertise in der
+              Eventplanung!, key: 4ada164f
+            label: Text
+            name: 4ada164f
+            widget: text
+          - hint: 'Original text: Technikverleih, key: -b3cf25f'
+            label: Text
+            name: '-b3cf25f'
+            widget: string
+          - hint: >-
+              Original text: Professionelle Ausstattung für Ihr Event: Ton-,
+              Lichttechnik, Bühnen, Traversen - Wir haben alles, was Sie
+              brauchen! Vertrauen Sie unserem Know-how!, key: -3f1755e9
+            label: Text
+            name: '-3f1755e9'
+            widget: text
+          - hint: 'Original text: Full-Service, key: -20fb4689'
+            label: Text
+            name: '-20fb4689'
+            widget: string
+          - hint: >-
+              Original text: Wir bieten Full-Service Dienstleistungen für Ihre
+              Veranstaltung: Von der Eventplanung bis zur technischen Umsetzung.
+              Wir kümmern uns um alles - von A bis Z. Vertrauen Sie auf unsere
+              Wissen und machen Sie Ihr Event zu einem unvergesslichen
+              Erlebnis!, key: 4a688b39
+            label: Text
+            name: 4a688b39
+            widget: text
+          - hint: >-
+              Original text: Unser Team würde sich freuen, von Ihnen zu hören.,
+              key: -413c616f
+            label: Text
+            name: '-413c616f'
+            widget: string
+          - hint: 'Original text: info@mediaundevent-works.de, key: 1252de59'
+            label: Text
+            name: 1252de59
+            widget: string
+          - hint: 'Original text: +49 163 1502384, key: 1492d1e7'
+            label: Text
+            name: 1492d1e7
+            widget: string
+          - hint: 'Original text: Hessenburg 2, key: -5b6e1b00'
+            label: Text
+            name: '-5b6e1b00'
+            widget: string
+          - hint: 'Original text: 35423 Lich, key: 246f6eef'
+            label: Text
+            name: 246f6eef
+            widget: string
+          - hint: 'Original text: Vorname, key: -76c4393c'
+            label: Text
+            name: '-76c4393c'
+            widget: string
+          - hint: 'Original text: Name, key: 24eeab'
+            label: Text
+            name: 24eeab
+            widget: string
+          - hint: 'Original text: Email, key: 3ff5b7c'
+            label: Text
+            name: 3ff5b7c
+            widget: string
+          - hint: 'Original text: Handynummer, key: 7cae62de'
+            label: Text
+            name: 7cae62de
+            widget: string
+          - hint: 'Original text: Thema, key: 4d085a5'
+            label: Text
+            name: 4d085a5
+            widget: string
+          - hint: 'Original text: Auswählen..., key: 698f7ef5'
+            label: Text
+            name: 698f7ef5
+            widget: string
+          - hint: 'Original text: Event, key: 403827a'
+            label: Text
+            name: 403827a
+            widget: string
+          - hint: 'Original text: Web, key: 15334'
+            label: Text
+            name: '15334'
+            widget: string
+          - hint: 'Original text: Wie können wir dir helfen?, key: 537eff0d'
+            label: Text
+            name: 537eff0d
+            widget: string
+          - hint: >-
+              Original text: Dürfen wir dich daraufhin kontaktieren?, key:
+              71255a05
+            label: Text
+            name: 71255a05
+            widget: string
+          - hint: >-
+              Original text: Thank you! Your submission has been received!, key:
+              5a0ea5a1
+            label: Text
+            name: 5a0ea5a1
+            widget: string
+          - hint: >-
+              Original text: Oops! Something went wrong while submitting the
+              form., key: -7c112e99
+            label: Text
+            name: '-7c112e99'
+            widget: string
+          - hint: 'Original text: Join our newsletter, key: 28be5fa3'
+            label: Text
+            name: 28be5fa3
+            widget: string
+          - hint: >-
+              Original text: We’ll send you a nice letter once per week. No
+              spam., key: -303994cc
+            label: Text
+            name: '-303994cc'
+            widget: string
+          - hint: 'Original text: We care about your data in our , key: -5505a12a'
+            label: Text
+            name: '-5505a12a'
+            widget: string
+          - hint: 'Original text: privacy policy, key: 329660ca'
+            label: Text
+            name: 329660ca
+            widget: string
+          - hint: 'Original text: ., key: 2e'
+            label: Text
+            name: 2e
+            widget: string
+          - hint: 'Original text: Product, key: 50c664cf'
+            label: Text
+            name: 50c664cf
+            widget: string
+          - hint: 'Original text: Overview, key: 23735199'
+            label: Text
+            name: '23735199'
+            widget: string
+          - hint: 'Original text: Features, key: -d78b7a3'
+            label: Text
+            name: '-d78b7a3'
+            widget: string
+          - hint: 'Original text: Soutions, key: 6c104e06'
+            label: Text
+            name: 6c104e06
+            widget: string
+          - hint: 'Original text: New, key: 13180'
+            label: Text
+            name: '13180'
+            widget: string
+          - hint: 'Original text: Tutorials, key: -236d9f4b'
+            label: Text
+            name: '-236d9f4b'
+            widget: string
+          - hint: 'Original text: Pricing, key: 507137a6'
+            label: Text
+            name: 507137a6
+            widget: string
+          - hint: 'Original text: Releases, key: -1d01c294'
+            label: Text
+            name: '-1d01c294'
+            widget: string
+          - hint: 'Original text: Company, key: -64202ba3'
+            label: Text
+            name: '-64202ba3'
+            widget: string
+          - hint: 'Original text: About us, key: 645f0031'
+            label: Text
+            name: 645f0031
+            widget: string
+          - hint: 'Original text: News, key: 24fef3'
+            label: Text
+            name: 24fef3
+            widget: string
+          - hint: 'Original text: Media kit, key: -910d786'
+            label: Text
+            name: '-910d786'
+            widget: string
+          - hint: 'Original text: Contact, key: -64104400'
+            label: Text
+            name: '-64104400'
+            widget: string
+          - hint: 'Original text: Resources, key: 13ede05'
+            label: Text
+            name: 13ede05
+            widget: string
+          - hint: 'Original text: Newsletter, key: -47761f27'
+            label: Text
+            name: '-47761f27'
+            widget: string
+          - hint: 'Original text: Help centre, key: -73d76c86'
+            label: Text
+            name: '-73d76c86'
+            widget: string
+          - hint: 'Original text: Support, key: -b54e851'
+            label: Text
+            name: '-b54e851'
+            widget: string
+          - hint: 'Original text: Use Cases, key: -1d18cd6'
+            label: Text
+            name: '-1d18cd6'
+            widget: string
+          - hint: 'Original text: Startups, key: 525771b6'
+            label: Text
+            name: 525771b6
+            widget: string
+          - hint: 'Original text: Enterprise, key: 46f90f81'
+            label: Text
+            name: 46f90f81
+            widget: string
+          - hint: 'Original text: Government, key: -6c8bc9ef'
+            label: Text
+            name: '-6c8bc9ef'
+            widget: string
+          - hint: 'Original text: SaaS, key: 273300'
+            label: Text
+            name: '273300'
+            widget: string
+          - hint: 'Original text: Marketplaces, key: 35cd13a8'
+            label: Text
+            name: 35cd13a8
+            widget: string
+          - hint: 'Original text: Ecommerce, key: -2d7629e0'
+            label: Text
+            name: '-2d7629e0'
+            widget: string
+          - hint: 'Original text: Social, key: -6c12fc73'
+            label: Text
+            name: '-6c12fc73'
+            widget: string
+          - hint: 'Original text: Twitter, key: 2c9a4253'
+            label: Text
+            name: 2c9a4253
+            widget: string
+          - hint: 'Original text: LinkedIn, key: 4b0ff13e'
+            label: Text
+            name: 4b0ff13e
+            widget: string
+          - hint: 'Original text: Facebook, key: 217bfee6'
+            label: Text
+            name: 217bfee6
+            widget: string
+          - hint: 'Original text: GitHub, key: 7f258fe3'
+            label: Text
+            name: 7f258fe3
+            widget: string
+          - hint: 'Original text: AngelList, key: 4332d41f'
+            label: Text
+            name: 4332d41f
+            widget: string
+          - hint: 'Original text: Dribbble, key: -20e9cf80'
+            label: Text
+            name: '-20e9cf80'
+            widget: string
+          - hint: 'Original text: © 2023 Bornsunday, key: 2011b6c3'
+            label: Text
+            name: 2011b6c3
+            widget: string
+          - hint: 'Original text: Terms, key: 4cf5967'
+            label: Text
+            name: 4cf5967
+            widget: string
+          - hint: 'Original text: Privacy, key: 5079bb68'
+            label: Text
+            name: 5079bb68
+            widget: string
+          - hint: 'Original text: Cookies, key: -64062591'
+            label: Text
+            name: '-64062591'
+            widget: string
+          - hint: 'Original text: Page Not Found, key: -40b0787c'
+            label: Text
+            name: '-40b0787c'
+            widget: string
+          - hint: >-
+              Original text: The page you are looking for doesn't exist or has
+              been moved, key: 556d64d8
+            label: Text
+            name: 556d64d8
+            widget: string
+          - hint: 'Original text: Eventworks, key: -4d31eab8'
+            label: Text
+            name: '-4d31eab8'
+            widget: string
+          - hint: 'Original text: Unsere Partysets, key: -2c66134b'
+            label: Text
+            name: '-2c66134b'
+            widget: string
+          - hint: >-
+              Original text: Entdecke unsere umfangreiche Auswahl an
+              hochwertigem Veranstaltungsequipment für die perfekte technische
+              Ausstattung deines Events., key: 49265a46
+            label: Text
+            name: 49265a46
+            widget: text
+          - hint: 'Original text: Hochzeiten, key: 7de05b8b'
+            label: Text
+            name: 7de05b8b
+            widget: string
+          - hint: 'Original text: Geburtstage, key: 4386830b'
+            label: Text
+            name: 4386830b
+            widget: string
+          - hint: 'Original text: Abipartys, key: -1f53136b'
+            label: Text
+            name: '-1f53136b'
+            widget: string
+          - hint: 'Original text: Kategorie: , key: 6630b485'
+            label: Text
+            name: 6630b485
+            widget: string
+          - hint: 'Original text: Preise ab: , key: -23c1fcf1'
+            label: Text
+            name: '-23c1fcf1'
+            widget: string
+          - hint: 'Original text: €, key: 20ac'
+            label: Text
+            name: 20ac
+            widget: string
+          - hint: 'Original text: No items found., key: 3d503d2b'
+            label: Text
+            name: 3d503d2b
+            widget: string
+          - hint: 'Original text: Beispiel Veranstaltungen:, key: -1ebf6d32'
+            label: Text
+            name: '-1ebf6d32'
+            widget: string
+          - hint: 'Original text: Unsere Veranstaltungen, key: -5e8f7b83'
+            label: Text
+            name: '-5e8f7b83'
+            widget: string
+          - hint: >-
+              Original text: Entdecke Veranstaltungen, welche wir mit Technik
+              versorgt haben., key: 2094edd4
+            label: Text
+            name: 2094edd4
+            widget: string
+      - label: Links
+        name: links
+        file: cms/_data/links.json
+        fields:
+          - label: Title
+            name: title
+            widget: hidden
+            default: Links
+          - hint: 'Original link: /, key: 2f'
+            label: Link
+            name: 2f
+            widget: string
+          - hint: 'Original link: /equipment/, key: 1ad19dd0'
+            label: Link
+            name: 1ad19dd0
+            widget: string
+          - hint: 'Original link: /events/, key: -3fb480d9'
+            label: Link
+            name: '-3fb480d9'
+            widget: string
+          - hint: 'Original link: #, key: 23'
+            label: Link
+            name: '23'
+            widget: string
+          - hint: 'Original link: #contact_footer, key: 20ac317d'
+            label: Link
+            name: 20ac317d
+            widget: string
+          - hint: >-
+              Original link: https://www.instagram.com/mediaundevent.works/,
+              key: -10951b68
+            label: Link
+            name: '-10951b68'
+            widget: string
+          - hint: 'Original link: mailto:info@mediaundevent-works.de, key: 3cd3cd51'
+            label: Link
+            name: 3cd3cd51
+            widget: string
+          - hint: 'Original link: tel:+491631502384, key: -610ec614'
+            label: Link
+            name: '-610ec614'
+            widget: string
+      - label: Images
+        name: images
+        file: cms/_data/images.json
+        fields:
+          - label: Title
+            name: title
+            widget: hidden
+            default: Images
+          - label: Image
+            name: 58a3f9a4
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: 736c4020
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: 40a4b12f
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: 1e3f1704
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: '-495b647f'
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: '-52779bf'
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: '-63ced507'
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: 2d2c9fd6
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: 2d3ab757
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: '-2b1beb3c'
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+publish_mode: editorial_workflow
