@@ -80,6 +80,92 @@ collections:
             name: additional_tags
             widget: text
             required: false
+  - name: team
+    label: Team Members
+    folder: cms/team
+    create: true
+    identifier_field: name
+    extension: md
+    slug: '{{slug}}'
+    fields:
+      - hint: ''
+        name: title
+        label: Name
+        widget: string
+        required: true
+      - hint: ''
+        name: created-on
+        label: Created On
+        widget: datetime
+        required: false
+      - hint: ''
+        name: updated-on
+        label: Updated On
+        widget: datetime
+        required: false
+      - hint: ''
+        name: published-on
+        label: Published On
+        widget: datetime
+        required: false
+      - label: Bio
+        name: body
+        widget: markdown
+        required: false
+      - hint: ''
+        name: f_profile-picture
+        label: Profile Picture
+        widget: object
+        required: false
+        fields:
+          - hint: ''
+            name: url
+            label: Image
+            widget: image
+            required: false
+            allow_multiple: false
+          - hint: Image Alt
+            name: alt
+            label: alt
+            widget: string
+            required: false
+      - hint: ''
+        name: f_bio-summary
+        label: Bio Summary
+        widget: string
+        required: false
+      - hint: ''
+        name: f_job-title
+        label: Job Title
+        widget: string
+        required: false
+      - hint: ''
+        name: f_email
+        label: Email
+        widget: string
+        required: false
+      - hint: ''
+        name: f_phone-number
+        label: Phone Number
+        widget: string
+        required: false
+      - hint: ''
+        name: f_facebook-link
+        label: Facebook Link
+        widget: string
+        required: false
+      - label: Tags
+        widget: hidden
+        name: tags
+        default: team
+      - label: Layout
+        widget: hidden
+        name: layout
+        default: '[team].html'
+      - label: Publish Date
+        name: date
+        widget: datetime
+      - *ref_0
   - name: veranstaltungen
     label: Veranstaltungens
     folder: cms/veranstaltungen
@@ -371,6 +457,10 @@ collections:
           - hint: 'Original text: Veranstaltungen, key: -32d2d1a1'
             label: Text
             name: '-32d2d1a1'
+            widget: string
+          - hint: 'Original text: Das Team, key: 693454e7'
+            label: Text
+            name: '693454e7'
             widget: string
           - hint: 'Original text: Events, key: 7c6ccd39'
             label: Text
@@ -856,6 +946,28 @@ collections:
             label: Text
             name: '-4d31eab8'
             widget: string
+          - hint: 'Original text: Unsere Veranstaltungen, key: -5e8f7b83'
+            label: Text
+            name: '-5e8f7b83'
+            widget: string
+          - hint: >-
+              Original text: Entdecke Veranstaltungen, welche wir mit Technik
+              versorgt haben., key: 2094edd4
+            label: Text
+            name: 2094edd4
+            widget: string
+          - hint: 'Original text: No items found., key: 3d503d2b'
+            label: Text
+            name: 3d503d2b
+            widget: string
+          - hint: 'Original text: Kategorie: , key: 6630b485'
+            label: Text
+            name: 6630b485
+            widget: string
+          - hint: 'Original text: Beispiel Veranstaltungen:, key: -1ebf6d32'
+            label: Text
+            name: '-1ebf6d32'
+            widget: string
           - hint: 'Original text: Unsere Partysets, key: -2c66134b'
             label: Text
             name: '-2c66134b'
@@ -879,10 +991,6 @@ collections:
             label: Text
             name: '-1f53136b'
             widget: string
-          - hint: 'Original text: Kategorie: , key: 6630b485'
-            label: Text
-            name: 6630b485
-            widget: string
           - hint: 'Original text: Preise ab: , key: -23c1fcf1'
             label: Text
             name: '-23c1fcf1'
@@ -891,24 +999,13 @@ collections:
             label: Text
             name: 20ac
             widget: string
-          - hint: 'Original text: No items found., key: 3d503d2b'
-            label: Text
-            name: 3d503d2b
-            widget: string
-          - hint: 'Original text: Beispiel Veranstaltungen:, key: -1ebf6d32'
-            label: Text
-            name: '-1ebf6d32'
-            widget: string
-          - hint: 'Original text: Unsere Veranstaltungen, key: -5e8f7b83'
-            label: Text
-            name: '-5e8f7b83'
-            widget: string
           - hint: >-
-              Original text: Entdecke Veranstaltungen, welche wir mit Technik
-              versorgt haben., key: 2094edd4
+              Original text: Entdecke unser Team, das mit Leidenschaft und
+              Fachwissen daran arbeitet, erstklassige Events und
+              Dienstleistungen zu liefern., key: -1273c8fb
             label: Text
-            name: 2094edd4
-            widget: string
+            name: '-1273c8fb'
+            widget: text
       - label: Links
         name: links
         file: cms/_data/links.json
@@ -1051,20 +1148,7 @@ collections:
                 widget: string
                 required: false
           - label: Image
-            name: 2d2c9fd6
-            widget: object
-            fields:
-              - name: url
-                label: Image Url
-                widget: image
-                allow_multiple: false
-                required: false
-              - name: alt
-                label: Image Alt
-                widget: string
-                required: false
-          - label: Image
-            name: 2d3ab757
+            name: 391bb220
             widget: object
             fields:
               - name: url
@@ -1078,6 +1162,19 @@ collections:
                 required: false
           - label: Image
             name: '-2b1beb3c'
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: 317f733b
             widget: object
             fields:
               - name: url

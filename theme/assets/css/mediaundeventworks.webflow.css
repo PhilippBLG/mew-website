@@ -1797,6 +1797,30 @@ label {
   padding-right: 2rem;
 }
 
+.team-div {
+  height: 100%;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  display: flex;
+}
+
+.team-name-div {
+  padding: 15px;
+}
+
+.team-picture {
+  width: 100%;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+}
+
+.team-container {
+  width: 100%;
+  background-color: rgba(208, 213, 221, .47);
+  border-radius: 15px;
+}
+
 @media screen and (max-width: 991px) {
   .menu-icon_line-bottom {
     width: 24px;
