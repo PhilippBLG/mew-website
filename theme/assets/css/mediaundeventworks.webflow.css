@@ -2429,6 +2429,10 @@ label {
     padding-left: 1rem;
     padding-right: 1rem;
   }
+
+  .team-div {
+    margin-bottom: 15px;
+  }
 }
 
 @media screen and (max-width: 479px) {

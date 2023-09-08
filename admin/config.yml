@@ -1048,6 +1048,10 @@ collections:
             label: Link
             name: '-610ec614'
             widget: string
+          - hint: 'Original link: /team/, key: 56c5cea3'
+            label: Link
+            name: 56c5cea3
+            widget: string
       - label: Images
         name: images
         file: cms/_data/images.json
