@@ -775,10 +775,10 @@ collections:
             name: 28be5fa3
             widget: string
           - hint: >-
-              Original text: We’ll send you a nice letter once per week. No
-              spam., key: -303994cc
+              Original text: We’ll send you a nice letter once per season. No
+              spam., key: -4af7aa9d
             label: Text
-            name: '-303994cc'
+            name: '-4af7aa9d'
             widget: string
           - hint: 'Original text: We care about your data in our , key: -5505a12a'
             label: Text
@@ -792,133 +792,13 @@ collections:
             label: Text
             name: 2e
             widget: string
-          - hint: 'Original text: Product, key: 50c664cf'
+          - hint: 'Original text: Menu, key: 24897f'
             label: Text
-            name: 50c664cf
+            name: 24897f
             widget: string
-          - hint: 'Original text: Overview, key: 23735199'
+          - hint: 'Original text: © 2023 Made in Lich, key: -2c60fd44'
             label: Text
-            name: '23735199'
-            widget: string
-          - hint: 'Original text: Features, key: -d78b7a3'
-            label: Text
-            name: '-d78b7a3'
-            widget: string
-          - hint: 'Original text: Soutions, key: 6c104e06'
-            label: Text
-            name: 6c104e06
-            widget: string
-          - hint: 'Original text: New, key: 13180'
-            label: Text
-            name: '13180'
-            widget: string
-          - hint: 'Original text: Tutorials, key: -236d9f4b'
-            label: Text
-            name: '-236d9f4b'
-            widget: string
-          - hint: 'Original text: Pricing, key: 507137a6'
-            label: Text
-            name: 507137a6
-            widget: string
-          - hint: 'Original text: Releases, key: -1d01c294'
-            label: Text
-            name: '-1d01c294'
-            widget: string
-          - hint: 'Original text: Company, key: -64202ba3'
-            label: Text
-            name: '-64202ba3'
-            widget: string
-          - hint: 'Original text: About us, key: 645f0031'
-            label: Text
-            name: 645f0031
-            widget: string
-          - hint: 'Original text: News, key: 24fef3'
-            label: Text
-            name: 24fef3
-            widget: string
-          - hint: 'Original text: Media kit, key: -910d786'
-            label: Text
-            name: '-910d786'
-            widget: string
-          - hint: 'Original text: Contact, key: -64104400'
-            label: Text
-            name: '-64104400'
-            widget: string
-          - hint: 'Original text: Resources, key: 13ede05'
-            label: Text
-            name: 13ede05
-            widget: string
-          - hint: 'Original text: Newsletter, key: -47761f27'
-            label: Text
-            name: '-47761f27'
-            widget: string
-          - hint: 'Original text: Help centre, key: -73d76c86'
-            label: Text
-            name: '-73d76c86'
-            widget: string
-          - hint: 'Original text: Support, key: -b54e851'
-            label: Text
-            name: '-b54e851'
-            widget: string
-          - hint: 'Original text: Use Cases, key: -1d18cd6'
-            label: Text
-            name: '-1d18cd6'
-            widget: string
-          - hint: 'Original text: Startups, key: 525771b6'
-            label: Text
-            name: 525771b6
-            widget: string
-          - hint: 'Original text: Enterprise, key: 46f90f81'
-            label: Text
-            name: 46f90f81
-            widget: string
-          - hint: 'Original text: Government, key: -6c8bc9ef'
-            label: Text
-            name: '-6c8bc9ef'
-            widget: string
-          - hint: 'Original text: SaaS, key: 273300'
-            label: Text
-            name: '273300'
-            widget: string
-          - hint: 'Original text: Marketplaces, key: 35cd13a8'
-            label: Text
-            name: 35cd13a8
-            widget: string
-          - hint: 'Original text: Ecommerce, key: -2d7629e0'
-            label: Text
-            name: '-2d7629e0'
-            widget: string
-          - hint: 'Original text: Social, key: -6c12fc73'
-            label: Text
-            name: '-6c12fc73'
-            widget: string
-          - hint: 'Original text: Twitter, key: 2c9a4253'
-            label: Text
-            name: 2c9a4253
-            widget: string
-          - hint: 'Original text: LinkedIn, key: 4b0ff13e'
-            label: Text
-            name: 4b0ff13e
-            widget: string
-          - hint: 'Original text: Facebook, key: 217bfee6'
-            label: Text
-            name: 217bfee6
-            widget: string
-          - hint: 'Original text: GitHub, key: 7f258fe3'
-            label: Text
-            name: 7f258fe3
-            widget: string
-          - hint: 'Original text: AngelList, key: 4332d41f'
-            label: Text
-            name: 4332d41f
-            widget: string
-          - hint: 'Original text: Dribbble, key: -20e9cf80'
-            label: Text
-            name: '-20e9cf80'
-            widget: string
-          - hint: 'Original text: © 2023 Bornsunday, key: 2011b6c3'
-            label: Text
-            name: 2011b6c3
+            name: '-2c60fd44'
             widget: string
           - hint: 'Original text: Terms, key: 4cf5967'
             label: Text
@@ -946,28 +826,6 @@ collections:
             label: Text
             name: '-4d31eab8'
             widget: string
-          - hint: 'Original text: Unsere Veranstaltungen, key: -5e8f7b83'
-            label: Text
-            name: '-5e8f7b83'
-            widget: string
-          - hint: >-
-              Original text: Entdecke Veranstaltungen, welche wir mit Technik
-              versorgt haben., key: 2094edd4
-            label: Text
-            name: 2094edd4
-            widget: string
-          - hint: 'Original text: No items found., key: 3d503d2b'
-            label: Text
-            name: 3d503d2b
-            widget: string
-          - hint: 'Original text: Kategorie: , key: 6630b485'
-            label: Text
-            name: 6630b485
-            widget: string
-          - hint: 'Original text: Beispiel Veranstaltungen:, key: -1ebf6d32'
-            label: Text
-            name: '-1ebf6d32'
-            widget: string
           - hint: 'Original text: Unsere Partysets, key: -2c66134b'
             label: Text
             name: '-2c66134b'
@@ -991,6 +849,10 @@ collections:
             label: Text
             name: '-1f53136b'
             widget: string
+          - hint: 'Original text: Kategorie: , key: 6630b485'
+            label: Text
+            name: 6630b485
+            widget: string
           - hint: 'Original text: Preise ab: , key: -23c1fcf1'
             label: Text
             name: '-23c1fcf1'
@@ -998,6 +860,24 @@ collections:
           - hint: 'Original text: €, key: 20ac'
             label: Text
             name: 20ac
+            widget: string
+          - hint: 'Original text: No items found., key: 3d503d2b'
+            label: Text
+            name: 3d503d2b
+            widget: string
+          - hint: 'Original text: Beispiel Veranstaltungen:, key: -1ebf6d32'
+            label: Text
+            name: '-1ebf6d32'
+            widget: string
+          - hint: 'Original text: Unsere Veranstaltungen, key: -5e8f7b83'
+            label: Text
+            name: '-5e8f7b83'
+            widget: string
+          - hint: >-
+              Original text: Entdecke Veranstaltungen, welche wir mit Technik
+              versorgt haben., key: 2094edd4
+            label: Text
+            name: 2094edd4
             widget: string
           - hint: >-
               Original text: Entdecke unser Team, das mit Leidenschaft und
@@ -1026,6 +906,10 @@ collections:
             label: Link
             name: '-3fb480d9'
             widget: string
+          - hint: 'Original link: /team/, key: 56c5cea3'
+            label: Link
+            name: 56c5cea3
+            widget: string
           - hint: 'Original link: #, key: 23'
             label: Link
             name: '23'
@@ -1048,9 +932,12 @@ collections:
             label: Link
             name: '-610ec614'
             widget: string
-          - hint: 'Original link: /team/, key: 56c5cea3'
+          - hint: >-
+              Original link:
+              https://instagram.com/mediaundevent.works?igshid=MzRlODBiNWFlZA==,
+              key: 6631b977
             label: Link
-            name: 56c5cea3
+            name: 6631b977
             widget: string
       - label: Images
         name: images
